@@ -5,6 +5,7 @@
 import twitter
 import time
 import sys
+import textwrap
 
 # Read config.py for our access keys etc
 config = {}
@@ -21,22 +22,25 @@ def write_header():
         file.write("PN,15300\r\n")
         file.write("SC,0000\r\n")
         file.write("PS,8000\r\n")
+        file.write("OL,0,Teletext Twitter\r\n")
         # graphical banner here - but not too big!
 
 def write_timeline(): # grab the latest timeline
     statuses = twitter.GetHomeTimeline(count = 1)
+    line_position = 1
 
     for status in statuses: # iterate through our responses
         tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
-        tweet_human_time = time.strftime("%d %b %Y %H:%S", tweet_time) # reformat time/date output
+        tweet_human_time = time.strftime("%d-%b-%Y %H:%S", tweet_time) # reformat time/date output
         tweet_username = status.user.screen_name
-        tweet_text = status.text
-        # For now, print to stdout until we write
-        # code to strip unprintable or weird characters
-        # and possibly replace other characters
-        print("`" * 40) # tweet divider
-        print("{} | @{}".format(tweet_human_time, tweet_username))
-        print("{}".format(tweet_text))
+        tweet_text = textwrap.wrap(status.text, 40)
+
+        with open("/home/pi/teletext/P153.tti", "a") as file:
+            file.write("OL,{},{} | @{}".format(str(line_position), tweet_human_time, tweet_username) + "`" * (36-len(tweet_human_time)-len(tweet_username)) + "\r\n")
+            line_position += 1
+            for line in tweet_text:
+                file.write("OL,{},{}\r\n".format(str(line_position), line))
+                line_position += 1
 
 def main():
     print("[*] teletext-twitter - (c) 2018 Mark Pentler (https://github.com/mpentler)", file=sys.stdout)
@@ -46,6 +50,7 @@ def main():
     while True:
         write_header()
         write_timeline()
+        print("[*] Waiting 30 seconds until next scrape", file=sys.stdout)
         time.sleep(30)
 
 if __name__ == '__main__':
