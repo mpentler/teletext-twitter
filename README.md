@@ -2,6 +2,8 @@
 Reads your Twitter timeline and turns it into teletext pages for your Raspberry Pi
 
 ## Installation
+(Info on how to get this talking to twitter coming soon - you'll probably figure out what to do from the config.py-default file. https://apps.twitter.com is the first place to go for your tokens etc)
+
 Right now this readme file makes the assumption that if you're interested in this, then:
 
 1) You've already got your Raspberry Pi connected to a TV over composite
