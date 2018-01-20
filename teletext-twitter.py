@@ -22,7 +22,6 @@ def write_header():
         file.write("PN,15300\r\n")
         file.write("SC,0000\r\n")
         file.write("PS,8000\r\n")
-        file.write("OL,0,Teletext Twitter\r\n")
         # graphical banner here - but not too big!
 
 def write_timeline(): # grab the latest timeline
