@@ -15,7 +15,7 @@ You will need to pick a unique name for the app. Which is annoying. Pick anythin
 
 When you've setup your config.py you can change to the teletext-twitter directory and run the script with:
 
-`python3 teletext-twitter`
+`python3 teletext-twitter.py`
 
 It will constantly update a spare page (153 - chosen because it used to be used for this purpose on Teefax in the past) in the main teletext folder (which defaults in VBIT2 to /home/pi/teletext/).
 
