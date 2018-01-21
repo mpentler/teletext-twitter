@@ -1,7 +1,7 @@
 # teletext-twitter
 Reads your Twitter timeline and turns it into teletext pages for your Raspberry Pi
 
-![alt tag](https://i.imgur.com/xwnfUw3.jpg "Screenshot of output")
+![Screenshot](https://i.imgur.com/xwnfUw3.jpg "Screenshot of output")
 
 ## Installation
 Right now this readme file makes the assumption that if you're interested in this, then:
