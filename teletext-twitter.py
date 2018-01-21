@@ -34,7 +34,7 @@ def write_header(): # write a header for the page and pop a nice banner at the t
         file.write("PN,15300\r\n")
         file.write("SC,0000\r\n")
         file.write("PS,8000\r\n")
-        file.write("OL,1," + chr(27) + chr(77) + "TELETEXT TWITTER" + chr(27) + chr(86) + (chr(127) * 22) + "\r\n")
+        file.write("OL,1," + DOUBLE_HEIGHT + "TELETEXT TWITTER" + chr(27) + chr(86) + (chr(127) * 22) + "\r\n")
         file.write("OL,3," + chr(27) + chr(86) + (chr(35) * 39) + "\r\n")
 
 def write_timeline(): # grab the latest timeline - only 5 tweets for now
