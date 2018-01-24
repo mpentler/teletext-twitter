@@ -10,8 +10,8 @@ Right now this readme file makes the assumption that if you're interested in thi
 2) You've already got VBIT2 and Raspi-Teletext running and outputting teletext data to your TV
 
 You can find both of the required projects at these links:
-raspi-teletext: https://github.com/ali1234/raspi-teletext - Only PAL is supported by raspi-teletext
-VBIT2: https://github.com/peterkvt80/vbit2
+* raspi-teletext: https://github.com/ali1234/raspi-teletext - Only PAL is supported by raspi-teletext
+* VBIT2: https://github.com/peterkvt80/vbit2
 
 After getting these up and running the last thing to do is to rename config.py-default to config.py and get your Twitter access tokens to store in the file. You can find a good guide for doing this here: https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
 
