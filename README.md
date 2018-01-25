@@ -3,15 +3,16 @@ Reads your Twitter timeline and turns it into teletext pages for your Raspberry 
 
 ![Screenshot](https://i.imgur.com/xwnfUw3.jpg "Screenshot of output")
 
+## What is this?
+Useless, for a start.. But if you've ever had the desire to read your Twitter timelime by pushing the teletext button on your remote and keying a page number then this is the package for you! Retro chick for the social media generation!
+
 ## Installation
-Right now this readme file makes the assumption that if you're interested in this, then:
+Before you get this up and running there are two things you need to do first:
 
-1) You've already got your Raspberry Pi connected to a TV over composite using a cable with the correct pin-out. I bought mine from The Pi Hut: https://thepihut.com/products/adafruit-a-v-and-rca-composite-video-audio-cable-for-raspberry-pi
-2) You've already got VBIT2 and Raspi-Teletext running and outputting teletext data to your TV
-
-You can find both of the required projects at these links:
-* raspi-teletext: https://github.com/ali1234/raspi-teletext - Only PAL is supported by raspi-teletext
-* VBIT2: https://github.com/peterkvt80/vbit2
+1) Connect your Raspberry Pi to a TV over composite using a cable with the correct pin-out. I bought mine from The Pi Hut: https://thepihut.com/products/adafruit-a-v-and-rca-composite-video-audio-cable-for-raspberry-pi
+2) Install the VBIT2 and raspi-teletext apps and make sure they are outputting teletext data to your TV
+..* raspi-teletext (Alistair Buxton): https://github.com/ali1234/raspi-teletext - Only PAL is supported by raspi-teletext
+..* VBIT2 (Peter Kwan): https://github.com/peterkvt80/vbit2
 
 After getting these up and running the last thing to do is to rename config.py-default to config.py and get your Twitter access tokens to store in the file. You can find a good guide for doing this here: https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
 
