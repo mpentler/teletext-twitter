@@ -7,6 +7,9 @@ Reads your Twitter timeline and turns it into teletext pages for your Raspberry 
 Useless, for a start.. But if you've ever had the desire to read your Twitter timelime by pushing the teletext button on your remote and keying a page number then this is the package for you! Retro chick for the social media generation!
 
 ## Installation
+After cloning the repository you'll need to install the Python-Twitter wrapper with pip:
+`pip install python-twitter`
+
 Before you get this up and running there are two things you need to do first:
 
 1) Connect your Raspberry Pi to a TV over composite using a cable with the correct pin-out. I bought mine from The Pi Hut: https://thepihut.com/products/adafruit-a-v-and-rca-composite-video-audio-cable-for-raspberry-pi
