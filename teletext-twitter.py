@@ -59,7 +59,7 @@ def write_timeline(): # grab the latest timeline - only 5 tweets for now
 def parse_args():
     parser = argparse.ArgumentParser(description="Reads your Twitter timeline and turns it into teletext pages for your Raspberry Pi.")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (minimum is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="0.1")
+    parser.add_argument("-v", "--version", action="version", version="0.2")
     parser.add_argument("-q", "--quiet", dest="quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
     args = parser.parse_args()
     args.delay = max(60, args.delay)
