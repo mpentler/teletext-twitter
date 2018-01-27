@@ -82,10 +82,10 @@ def main():
             print("[!] Error accessing teletext data file, exiting: {}".format(e.strerror), file=sys.stderr)
             sys.exit(1)
         except twitter.error.TwitterError as e:
-            print("[!] Error accessing your Twitter timeline: {}".format(e), file=sys.stderr)
-            print("[!] Trying again after specified delay", file=sys.stderr)
-        else:
-            time.sleep(args.delay)
+            for error in e.message:
+                print("[!] Error accessing your Twitter timeline: {}".format(error['message']), file=sys.stderr)
+                print("[!] Trying again after specified delay", file=sys.stderr)
+        time.sleep(args.delay)
 
 if __name__ == '__main__':
     try:
