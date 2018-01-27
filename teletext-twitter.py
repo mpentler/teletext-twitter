@@ -83,6 +83,10 @@ def main():
             sys.exit(1)
         except twitter.error.TwitterError as e:
             for error in e.message:
+                if error['code'] == 32:
+                    print("[!] Authentication error accessing Twitter. Check config.py file and make sure your tokens are correct.")
+                    print("[!] Exiting...")
+                    sys.exit(1)
                 print("[!] Error accessing your Twitter timeline: {}".format(error['message']), file=sys.stderr)
                 print("[!] Trying again after specified delay", file=sys.stderr)
         time.sleep(args.delay)
