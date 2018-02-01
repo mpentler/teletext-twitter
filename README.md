@@ -21,11 +21,11 @@ After getting these up and running the last thing to do is to rename config.py-d
 
 You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
 
-When you've setup your config.py you can change to the teletext-twitter directory and run the script with:
+When you've setup your config.py you can change to the teletext-twitter directory and run the script like this example that grabs your home timeline:
 
-`python3 teletext-twitter.py` (add -h to show options - also listed below)
+`python3 teletext-twitter.py -t` (add -h to show options - also listed below)
 
-By default it will constantly update a spare page (153 - chosen because it used to be used for this purpose on Teefax in the past) in the main teletext folder (which defaults in VBIT2 to /home/pi/teletext/).
+The script will constantly update a spare page (153 - chosen because it used to be used for this purpose on Teefax in the past) in the main teletext folder (which defaults in VBIT2 to /home/pi/teletext/).
 
 All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets (up to 5 - space permitting!) so that it will update on your screen.
 
