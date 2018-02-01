@@ -95,6 +95,10 @@ def parse_args():
     args = parser.parse_args()
     args.delay = max(60, args.delay)
 
+    if not args.home_timeline and not args.search:
+        print("[!] No mode specified. Use -t or -s arguments")
+        sys.exit(1)
+
     if args.home_timeline and args.search:
         print("[!] Home timeline and search options cannot be selected together. Exiting...")
         sys.exit(1)
