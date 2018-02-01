@@ -96,15 +96,15 @@ def parse_args():
     args.delay = max(60, args.delay)
 
     if not args.home_timeline and not args.search:
-        print("[!] No mode specified. Use -t or -s arguments")
+        print("[!] No mode specified. Use -t or -s arguments. Exiting...", file=sys.stderr)
         sys.exit(1)
 
     if args.home_timeline and args.search:
-        print("[!] Home timeline and search options cannot be selected together. Exiting...")
+        print("[!] Home timeline and search options cannot be selected together. Exiting...", file=sys.stderr)
         sys.exit(1)
 
     if args.search and not args.query:
-        print("[!] Search option selected but no query specfied with -q. Exiting...")
+        print("[!] Search option selected but no query specfied with -q. Exiting...", file=sys.stderr)
         sys.exit(1)
 
     return args
@@ -134,8 +134,8 @@ def main():
         except twitter.error.TwitterError as e:
             for error in e.message:
                 if error['code'] == 32:
-                    print("[!] Authentication error accessing Twitter. Check config.py file and make sure your tokens are correct.")
-                    print("[!] Exiting...")
+                    print("[!] Authentication error accessing Twitter. Check config.py file and make sure your tokens are correct.", file=sys.stderr)
+                    print("[!] Exiting...", file=sys.stderr)
                     sys.exit(1)
                 print("[!] Error accessing your Twitter timeline: {}".format(error['message']), file=sys.stderr)
                 print("[!] Trying again after specified delay", file=sys.stderr)
