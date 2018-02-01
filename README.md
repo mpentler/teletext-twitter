@@ -39,6 +39,7 @@ Apart from those notes, things should work ok. Have fun, turn back the clock, an
 
 ### -h/--help output
 
+<pre>
 usage: teletext-twitter.py [-h] [-t] [-s] [-q QUERY] [-d DELAY] [-v] [-Q]
 
 Reads your Twitter timeline and turns it into teletext pages for your Raspberry Pi.
@@ -56,3 +57,4 @@ optional arguments:
   -v, --version         show program's version number and exit
   -Q, --quiet           suppresses all output to the terminal except warnings
                         and errors
+</pre>
