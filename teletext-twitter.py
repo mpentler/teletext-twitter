@@ -99,7 +99,7 @@ def parse_args():
     parser.add_argument("-s", "--search", action="store_true", dest="search", help="specify a term to search for")
     parser.add_argument("-q", "--query", type=str, help="a search query, hashtags supported if you put quoted around the string")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (minimum is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="0.3")
+    parser.add_argument("-v", "--version", action="version", version="0.4-beta1")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()
