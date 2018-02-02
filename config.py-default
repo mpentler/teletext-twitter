@@ -4,3 +4,4 @@ consumer_secret =
 access_key = 
 "XXXXXXXX-xxXXxXXxxXxxxXxXXxXxXxXxxxXxxxxXxXXxXxxXX"
 access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
+tti_path = "/home/pi/teletext/"

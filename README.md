@@ -21,6 +21,8 @@ After getting these up and running the last thing to do is to rename config.py-d
 
 You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
 
+Change the tti_path line too if you've changed your Teefax location.
+
 When you've setup your config.py you can change to the teletext-twitter directory and run the script like this example that grabs your home timeline:
 
 `python3 teletext-twitter.py -t` (add -h to show options - also listed below)
@@ -32,8 +34,8 @@ All of the files in that folder are sent across to the TV every so often, theref
 ## Notes
 * At this moment in time the script reads 5 tweets. Further versions will improve on this by writing multiple tweets, possibly in subpages :-O
 * New tweets are grabbed every 60 seconds by default. This is configurable with the -d option, but you do have be aware of the Twitter API limits.
-* Right now this script doesn't do much to strip or replace characters that the teletext specification doesn't support. Emojis in particular may destroy the layout. I'll work on it...
-* Character substitutions that *are* handled are things like replacing underscores with hyphens and also making sure # works correctly. You also have to replace curly apostrophes with straight ones, as that's all the specification allows
+* Emoji stripping is now included. Mostly.
+* Due to the limited character substitutions are implemented. Things like replacing underscores with hyphens and also making sure # works correctly. You also have to replace curly apostrophes with straight ones, as that's all the teletext specification allows
 
 Apart from those notes, things should work ok. Have fun, turn back the clock, and if you genuinely use this for anything please let me know (also you're mental/cool).
 
