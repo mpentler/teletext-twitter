@@ -7,6 +7,7 @@ import time
 import sys
 import textwrap
 import argparse
+import re
 
 # define our control codes here for easy use later
 ESCAPE = chr(27)
@@ -25,10 +26,19 @@ twitter_object = twitter.Api(access_token_key = config["access_key"],
                       sleep_on_rate_limit = True) # so we don't hit the rate limit and raise an exception
 
 def clean_line(line):
-    # clean emojis here when feature complete
+    emoji_pattern = re.compile("[" # our unicode ranges go here. this will need frequent tweaking
+                              u"\U00002300-\U000023FF" # misc technical
+                              u"\U000024C2-\U0001F251" # enclosed characters including flags
+                              u"\U0001F300-\U0001F5FF" # symbols & pictographs
+                              u"\U0001F600-\U0001F67F" # emoticons
+                              u"\U0001F680-\U0001F9FF" # transport & map symbols
+                               "]+", flags=re.UNICODE)
+    line = emoji_pattern.sub(r'', line)
+
     line = line.replace("’", "'") # replacing some problematic characters here
     line = line.replace("_", "-") # the teletext English character set doesn't
     line = line.replace("#", "_") # support a lot of things!
+
     return line
 
 def write_header(): # write a header for the page and pop a nice banner at the top
