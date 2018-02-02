@@ -35,7 +35,7 @@ All of the files in that folder are sent across to the TV every so often, theref
 * At this moment in time the script reads 5 tweets. Further versions will improve on this by writing multiple tweets, possibly in subpages :-O
 * New tweets are grabbed every 60 seconds by default. This is configurable with the -d option, but you do have be aware of the Twitter API limits.
 * Emoji stripping is now included. Mostly.
-* Due to the limited character substitutions are implemented. Things like replacing underscores with hyphens and also making sure # works correctly. You also have to replace curly apostrophes with straight ones, as that's all the teletext specification allows
+* Due to the limited teletext character set substitutions are implemented. Things like replacing underscores with hyphens and also making sure # works correctly. You also have to replace curly apostrophes with straight ones, as that's all the specification allows
 
 Apart from those notes, things should work ok. Have fun, turn back the clock, and if you genuinely use this for anything please let me know (also you're mental/cool).
 
