@@ -63,7 +63,7 @@ def write_timeline(): # grab the latest timeline - only 5 tweets for now
         if (line_position + len(tweet_text) + 1) > 24: # are we going to fill the page?
             break # yep! dump the last tweet!
 
-        with open("/home/pi/teletext/P153.tti", "a") as file:
+        with open(config["tti_path"] + "P153.tti", "a") as file:
             file.write("OL,{},".format(str(line_position)) + ("`" * (36-len(tweet_human_time)-len(tweet_username))) + "@{}".format(tweet_username) + " | " + "{}".format(tweet_human_time) + "\r\n")
             line_position += 1
             for line in tweet_text:
@@ -84,7 +84,7 @@ def write_search_term(search_term): # search recent tweets with a particular sea
         if (line_position + len(tweet_text) + 1) > 24: # are we going to fill the page?
             break # yep! dump the last tweet!
 
-        with open("/home/pi/teletext/P153.tti", "a") as file:
+        with open(config["tti_path"] + "P153.tti", "a") as file:
             file.write("OL,{},".format(str(line_position)) + ("`" * (36-len(tweet_human_time)-len(tweet_username))) + "@{}".format(tweet_username) + " | " + "{}".format(tweet_human_time) + "\r\n")
             line_position += 1
             for line in tweet_text:
