@@ -34,7 +34,7 @@ The script will constantly update a spare page (153 - chosen because it used to 
 All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets (up to 5 - space permitting!) so that it will update on your screen.
 
 ## Theme support
-In the config.py file you can see a theme section. The teletext level I am using supports 8 colours:
+In the config.py file you can see a theme section. The teletext level I am using supports 7 colours:
 * Red 
 * Green
 * Yellow
