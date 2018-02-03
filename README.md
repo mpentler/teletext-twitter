@@ -15,20 +15,16 @@ Before you get this up and running there are two other things you need to do fir
 1) Connect your Raspberry Pi to a TV over composite using a cable with the correct pin-out. I bought mine from The Pi Hut: https://thepihut.com/products/adafruit-a-v-and-rca-composite-video-audio-cable-for-raspberry-pi
 2) Install the VBIT2 and raspi-teletext apps and make sure they are outputting teletext data to your TV
 
-..* raspi-teletext (Alistair Buxton): https://github.com/ali1234/raspi-teletext - Only PAL is supported by raspi-teletext
-..* VBIT2 (Peter Kwan): https://github.com/peterkvt80/vbit2
+* raspi-teletext (Alistair Buxton): https://github.com/ali1234/raspi-teletext - Only PAL is supported by raspi-teletext
+* VBIT2 (Peter Kwan): https://github.com/peterkvt80/vbit2
 
 ## Setup
 
 After getting these up and running there are some setup tasks to do. Rename config.py-default to config.py and open the file in a text editor. You need to add:
 
-1) Your Twitter access tokens
-..*You can find a good guide for doing this here: https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
-..*You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
-2) Check where your pages will be saved to
-..*Change the tti_path line too if you've changed your Teefax location.
-3) Change the colours if you want
-..*Theme support is detailed below
+1) Your Twitter access tokens: You can find a good guide for doing this here - https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/ You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
+2) Check where your pages will be saved to: Change the tti_path line too if you've changed your Teefax location.
+3) Change the colours if you want: Theme support is detailed below
 
 When you've setup your config.py you can run the script like this example that grabs your home timeline:
 
@@ -37,6 +33,9 @@ When you've setup your config.py you can run the script like this example that g
 The script will constantly update a spare page (153 - chosen because it used to be used for this purpose on Teefax in the past) in the main teletext folder (which defaults in VBIT2 to /home/pi/teletext/).
 
 All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets (up to 5 - space permitting!) so that it will update on your screen.
+
+## Theme support
+
 
 ## Notes
 * At this moment in time the script reads 5 tweets. Further versions will improve on this by writing multiple tweets, possibly in subpages :-O
