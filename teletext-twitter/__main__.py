@@ -11,10 +11,9 @@ import re
 
 # define our control codes here for easy use later
 ESCAPE = chr(27)
-RED = ESCAPE + chr(65)
-CYAN = ESCAPE + chr(70)
 DOUBLE_HEIGHT = ESCAPE + chr(77)
 MOSAIC_CYAN = ESCAPE + chr(86)
+text_colours = {"red" : 65, "green" : 66, "yellow" : 67 , "blue" : 68 , "magenta" : 69, "cyan" : 70, "white" : 71}
 
 # Read config.py for our Twitter access keys etc
 config = {}
@@ -64,11 +63,17 @@ def write_timeline(): # grab the latest timeline - only 5 tweets for now
             break # yep! dump the last tweet!
 
         with open(config["tti_path"] + "P153.tti", "a") as file:
-            file.write("OL,{},".format(str(line_position)) + ("`" * (36-len(tweet_human_time)-len(tweet_username))) + "@{}".format(tweet_username) + " | " + "{}".format(tweet_human_time) + "\r\n")
+            file.write("OL,{},".format(str(line_position)) +
+                       ("`" * (35-len(tweet_human_time)-len(tweet_username))) +
+                       ESCAPE + chr(text_colours[config["username_colour"]]) +"@{}".format(tweet_username) + ESCAPE + chr(text_colours["white"]) + "|" +
+                       ESCAPE + chr(text_colours[config["timestamp_colour"]]) + "{}".format(tweet_human_time) +
+                       "\r\n")
             line_position += 1
             for line in tweet_text:
                 line = clean_line(line)
-                file.write("OL,{},".format(str(line_position)) + RED + "{}\r\n".format(line))
+                file.write("OL,{},".format(str(line_position)) +
+                           ESCAPE + chr(text_colours[config["tweet_colour"]]) +
+                           "{}\r\n".format(line))
                 line_position += 1
 
 def write_search_term(search_term): # search recent tweets with a particular search term
@@ -85,11 +90,17 @@ def write_search_term(search_term): # search recent tweets with a particular sea
             break # yep! dump the last tweet!
 
         with open(config["tti_path"] + "P153.tti", "a") as file:
-            file.write("OL,{},".format(str(line_position)) + ("`" * (36-len(tweet_human_time)-len(tweet_username))) + "@{}".format(tweet_username) + " | " + "{}".format(tweet_human_time) + "\r\n")
+            file.write("OL,{},".format(str(line_position)) +
+                       ("`" * (35-len(tweet_human_time)-len(tweet_username))) +
+                       ESCAPE + chr(text_colours[config["username_colour"]]) + "@{}".format(tweet_username) + ESCAPE + chr(text_colours["white"]) + "|" +
+                       ESCAPE + chr(text_colours[config["timestamp_colour"]]) + "{}".format(tweet_human_time) +
+                       "\r\n")
             line_position += 1
             for line in tweet_text:
                 line = clean_line(line)
-                file.write("OL,{},".format(str(line_position)) + RED + "{}\r\n".format(line))
+                file.write("OL,{},".format(str(line_position)) +
+                           ESCAPE + chr(text_colours[config["tweet_colour"]]) +
+                           "{}\r\n".format(line))
                 line_position += 1
 
 def parse_args():
@@ -99,7 +110,7 @@ def parse_args():
     parser.add_argument("-s", "--search", action="store_true", dest="search", help="specify a term to search for")
     parser.add_argument("-q", "--query", type=str, help="a search query, hashtags supported if you put quoted around the string")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (minimum is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="0.4-beta1")
+    parser.add_argument("-v", "--version", action="version", version="0.4-beta2")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()
