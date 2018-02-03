@@ -19,7 +19,6 @@ Before you get this up and running there are two other things you need to do fir
 * VBIT2 (Peter Kwan): https://github.com/peterkvt80/vbit2
 
 ## Setup
-
 After getting these up and running there are some setup tasks to do. Rename config.py-default to config.py and open the file in a text editor. You need to add:
 
 1) Your Twitter access tokens: You can find a good guide for doing this here - https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/ You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
@@ -35,7 +34,18 @@ The script will constantly update a spare page (153 - chosen because it used to 
 All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets (up to 5 - space permitting!) so that it will update on your screen.
 
 ## Theme support
+In the config.py file you can see a theme section. The teletext level I am using supports 8 colours:
+* Red 
+* Green
+* Yellow
+* Blue
+* Magenta
+* Cyan
+* White
 
+You can change the colours of the main header bar and the thin separator.
+
+You can also change the colours of a tweet poster's username, timestamp, and the text of the tweet itself.
 
 ## Notes
 * At this moment in time the script reads 5 tweets. Further versions will improve on this by writing multiple tweets, possibly in subpages :-O
