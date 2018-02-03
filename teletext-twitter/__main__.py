@@ -12,8 +12,10 @@ import re
 # define our control codes here for easy use later
 ESCAPE = chr(27)
 DOUBLE_HEIGHT = ESCAPE + chr(77)
-MOSAIC_CYAN = ESCAPE + chr(86)
+SET_BACKGROUND = ESCAPE + chr(93)
+TWITTER_BIRD = chr(105) + chr(108) + chr(39)
 text_colours = {"red" : 65, "green" : 66, "yellow" : 67 , "blue" : 68 , "magenta" : 69, "cyan" : 70, "white" : 71}
+mosaic_colours = {"red" : 81, "green" : 82, "yellow" : 83, "blue" : 84, "magenta" : 85, "cyan" : 86, "white" : 87}
 
 # Read config.py for our Twitter access keys etc
 config = {}
@@ -46,8 +48,10 @@ def write_header(): # write a header for the page and pop a nice banner at the t
         file.write("PN,15300\r\n")
         file.write("SC,0000\r\n")
         file.write("PS,8000\r\n")
-        file.write("OL,1," + DOUBLE_HEIGHT + "TELETEXT TWITTER" + MOSAIC_CYAN + (chr(127) * 22) + "\r\n")
-        file.write("OL,3," + MOSAIC_CYAN + (chr(35) * 39) + "\r\n")
+        file.write("OL,1," + ESCAPE + chr(text_colours[config["header_colour"]]) + SET_BACKGROUND +
+                   DOUBLE_HEIGHT + ESCAPE + chr(text_colours["white"]) +
+                   "TELETEXT TWITTER               " + ESCAPE + chr(mosaic_colours["cyan"]) + TWITTER_BIRD + "\r\n")
+        file.write("OL,3," + ESCAPE + chr(mosaic_colours[config["header_separator"]]) + (chr(35) * 39) + "\r\n")
 
 def write_timeline(): # grab the latest timeline - only 5 tweets for now
     statuses = twitter_object.GetHomeTimeline(count = 5)
@@ -110,7 +114,7 @@ def parse_args():
     parser.add_argument("-s", "--search", action="store_true", dest="search", help="specify a term to search for")
     parser.add_argument("-q", "--query", type=str, help="a search query, hashtags supported if you put quoted around the string")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (minimum is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="0.4-beta2")
+    parser.add_argument("-v", "--version", action="version", version="0.4")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()

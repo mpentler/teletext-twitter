@@ -11,6 +11,8 @@ access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
 # display colours - must be in quotes! 
 # allowed colours are:
 # red, green, yellow, blue, magenta, cyan, white
+header_colour = "blue"
+header_separator = "cyan"
 tweet_colour = "white"
 username_colour = "blue"
 timestamp_colour = "yellow"
