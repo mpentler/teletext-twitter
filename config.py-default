@@ -1,7 +1,12 @@
+# teletext-twitter config file
+
+# twitter keys
 consumer_key = "XxXxXxxXXXxxxxXXXxXX" 
 consumer_secret = 
 "xXXXXXXXXxxxxXxXXxxXxxXXxXxXxxxxXxXXxxxXXx" 
 access_key = 
 "XXXXXXXX-xxXXxXXxxXxxxXxXXxXxXxXxxxXxxxxXxXXxXxxXX"
 access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
+
+# miscellaneous
 tti_path = "/home/pi/teletext/"
