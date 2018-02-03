@@ -10,18 +10,25 @@ Useless, for a start.. But if you've ever had the desire to read your tweets by 
 After cloning the repository you'll need to install the Python-Twitter wrapper with pip:
 `pip install python-twitter`
 
-Before you get this up and running there are two things you need to do first:
+Before you get this up and running there are two other things you need to do first:
 
 1) Connect your Raspberry Pi to a TV over composite using a cable with the correct pin-out. I bought mine from The Pi Hut: https://thepihut.com/products/adafruit-a-v-and-rca-composite-video-audio-cable-for-raspberry-pi
 2) Install the VBIT2 and raspi-teletext apps and make sure they are outputting teletext data to your TV
+
 ..* raspi-teletext (Alistair Buxton): https://github.com/ali1234/raspi-teletext - Only PAL is supported by raspi-teletext
 ..* VBIT2 (Peter Kwan): https://github.com/peterkvt80/vbit2
 
-After getting these up and running the last thing to do is to rename config.py-default to config.py and get your Twitter access tokens to store in the file. You can find a good guide for doing this here: https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
+## Setup
 
-You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
+After getting these up and running there are some setup tasks to do. Rename config.py-default to config.py and open the file in a text editor. You need to add:
 
-Change the tti_path line too if you've changed your Teefax location. You can also customise the displayed colours in here too, which should be self-explanatory.
+1) Your Twitter access tokens
+..*You can find a good guide for doing this here: https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/
+..*You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
+2) Check where your pages will be saved to
+..*Change the tti_path line too if you've changed your Teefax location.
+3) Change the colours if you want
+..*Theme support is detailed below
 
 When you've setup your config.py you can run the script like this example that grabs your home timeline:
 
