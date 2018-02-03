@@ -23,7 +23,7 @@ You will need to pick a unique name for the app. Which is annoying. Pick anythin
 
 Change the tti_path line too if you've changed your Teefax location.
 
-When you've setup your config.py you can change to the teletext-twitter directory and run the script like this example that grabs your home timeline:
+When you've setup your config.py you can run the script like this example that grabs your home timeline:
 
 `python3 teletext-twitter -t` (add -h to show options - also listed below)
 
