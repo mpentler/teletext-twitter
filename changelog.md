@@ -1,5 +1,9 @@
 ## Changelog
 
+### v0.5
+- extensive code restructuring, including splitting things out into modules
+- code made a lot more modular (it's a start anyway)
+
 ### v0.4
 - emoji stripping added!
 - implemented theme support: pick your own colour scheme!
