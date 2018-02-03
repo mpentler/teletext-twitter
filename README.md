@@ -25,7 +25,7 @@ Change the tti_path line too if you've changed your Teefax location.
 
 When you've setup your config.py you can change to the teletext-twitter directory and run the script like this example that grabs your home timeline:
 
-`python3 teletext-twitter.py -t` (add -h to show options - also listed below)
+`python3 teletext-twitter -t` (add -h to show options - also listed below)
 
 The script will constantly update a spare page (153 - chosen because it used to be used for this purpose on Teefax in the past) in the main teletext folder (which defaults in VBIT2 to /home/pi/teletext/).
 
