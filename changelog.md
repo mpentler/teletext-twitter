@@ -1,9 +1,12 @@
 ## Changelog
 
+### v0.5.1
+- more restructuring
+- you can now customise the page title text
+
 ### v0.5
 - extensive code restructuring, including splitting things out into modules
 - code made a lot more "functional" resulting in saving some lines (it's a start anyway)
-- you can now customise the page title text
 
 ### v0.4
 - emoji stripping added!
