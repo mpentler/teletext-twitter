@@ -3,6 +3,7 @@
 ### v0.5
 - extensive code restructuring, including splitting things out into modules
 - code made a lot more modular (it's a start anyway)
+- you can now customise the page title text
 
 ### v0.4
 - emoji stripping added!

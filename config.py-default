@@ -8,8 +8,10 @@ access_key =
 "XXXXXXXX-xxXXxXXxxXxxxXxXXxXxXxXxxxXxxxxXxXXxXxxXX"
 access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
 
-# display colours - must be in quotes! 
-# allowed colours are:
+# theme section
+# page title - x chars maximum
+page_title = "TELETEXT TWITTER"
+# display colours - must be in quotes! allowed colours are:
 # red, green, yellow, blue, magenta, cyan, white
 header_colour = "blue"
 header_separator = "cyan"
