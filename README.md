@@ -47,6 +47,8 @@ You can change the colours of the main header bar and the thin separator.
 
 You can also change the colours of a tweet poster's username, timestamp, and the text of the tweet itself.
 
+Finally, the title text at the top can be changed, although there is a character limit.
+
 ## Notes
 * At this moment in time the script reads 5 tweets. Further versions will improve on this by writing multiple tweets, possibly in subpages :-O
 * New tweets are grabbed every 60 seconds by default. This is configurable with the -d option, but you do have be aware of the Twitter API limits.
