@@ -1,7 +1,8 @@
 # teletext-twitter
 Reads your Twitter timeline or searches for tweets and turns them into teletext pages for your Raspberry Pi
 
-![Screenshot](https://i.imgur.com/xwnfUw3.jpg "Screenshot of output")
+![Screenshot](https://i.imgur.com/xwnfUw3.jpg "Screenshot of output 1")
+![Screenshot](https://i.imgur.com/XuiyOsE.jpg "Screenshot of output 2")
 
 ## What is this?
 Useless, for a start.. But if you've ever had the desire to read your tweets by pushing the teletext button on your remote and keying a page number then this is the package for you! Retro chic for the social media generation!
