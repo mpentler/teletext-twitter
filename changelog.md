@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.5.2
+- Fixed stupid bug where I'd used %S instead of %M for the time display. now they're correct
+
 ### v0.5.1
 - more restructuring
 - you can now customise the page title text

@@ -49,7 +49,7 @@ def write_timeline(twitter_object, config): # grab the latest timeline - only 5 
     for status in statuses: # iterate through our responses
         tweet_text = clean_tweet(status.text)
         tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
-        tweet_human_time = time.strftime("%d-%b-%Y %H:%S", tweet_time) # reformat time/date output
+        tweet_human_time = time.strftime("%d-%b-%Y %H:%M", tweet_time) # reformat time/date output
         tweet_username = status.user.screen_name
         tweet_text = textwrap.wrap(tweet_text, 39) # make sure our lines fit on the screen
 
@@ -70,7 +70,7 @@ def write_search_term(twitter_object, search_term, config): # search recent twee
     for status in statuses: # iterate through our responses
         tweet_text = clean_tweet(status.text) # process the tweet text
         tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
-        tweet_human_time = time.strftime("%d-%b-%Y %H:%S", tweet_time) # reformat time/date output
+        tweet_human_time = time.strftime("%d-%b-%Y %H:%M", tweet_time) # reformat time/date output
         tweet_username = status.user.screen_name
         tweet_text = textwrap.wrap(status.text, 39) # make sure our lines fit on the screen
 
