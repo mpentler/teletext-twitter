@@ -21,26 +21,21 @@ twitter_object = twitter.Api(access_token_key = config["access_key"],
 def parse_args():
     parser = argparse.ArgumentParser(description="Reads your Twitter timeline and turns it into teletext pages for your Raspberry Pi.")
 
-    parser.add_argument("-t", "--timeline", action="store_true", dest="home_timeline", help="download your latest home timeline", default=False)
-    parser.add_argument("-s", "--search", action="store_true", dest="search", help="specify a term to search for")
-    parser.add_argument("-q", "--query", type=str, help="a search query, hashtags supported if you put quoted around the string")
+    parser.add_argument("-m", "--mode", type=str, help="choose between different modes - home, user or search")
+    parser.add_argument("-q", "--query", type=str, help="a search query, either a search term or a username. hashtags supported if you put quotes around the string")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (minimum is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="0.5.3")
+    parser.add_argument("-v", "--version", action="version", version="0.6")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()
     args.delay = max(60, args.delay)
 
-    if not args.home_timeline and not args.search:
-        print("[!] No mode specified. Use -t or -s arguments. Exiting...", file=sys.stderr)
+    if args.mode == "search" and not args.query:
+        print("[!] Search mode selected but no query specfied with -q. Exiting...", file=sys.stderr)
         sys.exit(1)
 
-    if args.home_timeline and args.search:
-        print("[!] Home timeline and search options cannot be selected together. Exiting...", file=sys.stderr)
-        sys.exit(1)
-
-    if args.search and not args.query:
-        print("[!] Search option selected but no query specfied with -q. Exiting...", file=sys.stderr)
+    if args.mode == "user" and not args.query:
+        print("[!] User timeline mode selected but no username specified. Exiting...", file=sys.stderr)
         sys.exit(1)
 
     return args
@@ -54,14 +49,18 @@ def main():
     while True:
         try:
             write_header(config)
-            if args.home_timeline:
+            if args.mode == "home":
                 if not args.quiet:
                     print("[*] Beginning home timeline scraping", file=sys.stdout)
-                write_timeline(twitter_object, config)
-            elif args.search:
+                write_home_timeline(twitter_object, config)
+            elif args.mode == "search":
                 if not args.quiet:
                     print("[*] Getting recent tweets containing: " + args.query, file=sys.stdout)
                 write_search_term(twitter_object, args.query, config)
+            elif args.mode == "user":
+                if not args.quiet:
+                    print("[*] Getting all tweets from user: @{}".format(args.query), file=sys.stdout)
+                write_user_timeline(twitter_object, args.query, config)
             if not args.quiet:
                 print("[*] Page updated. Waiting {} seconds until next scrape".format(args.delay), file=sys.stdout)
         except OSError as e:
