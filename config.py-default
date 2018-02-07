@@ -21,3 +21,4 @@ timestamp_colour = "yellow"
 
 # miscellaneous
 tti_path = "/home/pi/teletext/"
+page_number = 153
