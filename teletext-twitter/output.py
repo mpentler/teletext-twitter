@@ -85,8 +85,6 @@ def write_search_term(twitter_object, search_term, config): # search recent twee
                 line_position += 1
 
 def write_user_timeline(twitter_object, username, config):
-    print("user mode, username: @{}".format(username))
-
     statuses = twitter_object.GetUserTimeline(screen_name=username, count=5)
     line_position = 4
 

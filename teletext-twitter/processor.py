@@ -6,8 +6,7 @@
 import textwrap
 import re
 
-# character replacement and stripping function
-def clean_tweet(tweet):
+def clean_tweet(tweet): # character replacement and stripping function
     # first, get rid of as many emojis as possible
     emoji_pattern = re.compile("[" # our unicode ranges go here. this will need frequent tweaking
                               u"\U00002300-\U000023FF" # misc technical
