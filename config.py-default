@@ -2,10 +2,8 @@
 
 # twitter keys
 consumer_key = "XxXxXxxXXXxxxxXXXxXX" 
-consumer_secret = 
-"xXXXXXXXXxxxxXxXXxxXxxXXxXxXxxxxXxXXxxxXXx" 
-access_key = 
-"XXXXXXXX-xxXXxXXxxXxxxXxXXxXxXxXxxxXxxxxXxXXxXxxXX"
+consumer_secret = "xXXXXXXXXxxxxXxXXxxXxxXXxXxXxxxxXxXXxxxXXx" 
+access_key = "XXXXXXXX-xxXXxXXxxXxxxXxXXxXxXxXxxxXxxxxXxXXxXxxXX"
 access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
 
 # theme section

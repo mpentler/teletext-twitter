@@ -8,6 +8,7 @@ import re
 
 # character replacement and stripping function
 def clean_tweet(tweet):
+    # first, get rid of as many emojis as possible
     emoji_pattern = re.compile("[" # our unicode ranges go here. this will need frequent tweaking
                               u"\U00002300-\U000023FF" # misc technical
                               u"\U000024C2-\U0001F251" # enclosed characters including flags
@@ -17,8 +18,10 @@ def clean_tweet(tweet):
                                "]+", flags=re.UNICODE)
     tweet = emoji_pattern.sub(r'', tweet)
 
-    tweet = tweet.replace("’", "'") # replacing some problematic characters here
-    tweet = tweet.replace("_", "-") # the teletext English character set doesn't
-    tweet = tweet.replace("#", "_") # support a lot of things!
+    # Now our character substitutions. The teletext English character set doesn't support a lot of characters!
+    tweet = tweet.replace("’", "'")
+    tweet = tweet.replace("_", "-")
+    tweet = tweet.replace("#", "_")
+    tweet = tweet.replace('“', '"')
 
     return tweet

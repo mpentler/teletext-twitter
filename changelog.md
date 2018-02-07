@@ -1,5 +1,13 @@
 ## Changelog
 
+### v0.6
+- New mode added: show latest tweets from a certain user
+- cmd line switches changed to accommodate user mode
+- logo looks less like a dog
+- bug fix: tweet cleaning now works in search mode
+- bug fix: added curly quote->normal quote replacement
+- default config file wasn't formatted right
+
 ### v0.5.3
 - Page number now user-customisable
 
