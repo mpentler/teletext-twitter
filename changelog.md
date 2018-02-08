@@ -1,5 +1,9 @@
 ## Changelog
 
+### v0.7
+- compressed three different tweet output functions into one! i guess this is slower to run but i like smaller, cleaner files...
+- fixed still display bug in write_home_timeline function
+
 ### v0.6
 - New mode added: show latest tweets from a certain user
 - cmd line switches changed to accommodate user mode

@@ -42,50 +42,13 @@ def write_header(config): # write a header for the page and pop a nice banner at
                    page_title + logo_spacer + ESCAPE + chr(mosaic_colours["cyan"]) + TWITTER_BIRD + "\r\n")
         file.write("OL,3," + ESCAPE + chr(mosaic_colours[config["header_separator"]]) + (chr(35) * 39) + "\r\n")
 
-def write_home_timeline(twitter_object, config): # grab the latest timeline - only 5 tweets for now
-    statuses = twitter_object.GetHomeTimeline(count = 5)
-    line_position = 4
-
-    for status in statuses: # iterate through our responses
-        tweet_text = clean_tweet(status.text)
-        tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
-        tweet_human_time = time.strftime("%d-%b-%Y %H:%M", tweet_time) # reformat time/date output
-        tweet_username = status.user.screen_name
-        tweet_text = textwrap.wrap(tweet_text, 38) # make sure our lines fit on the screen
-
-        if (line_position + len(tweet_text) + 1) > 24: # are we going to fill the page?
-            break # yep! dump the last tweet!
-
-        with open(config["tti_path"] + "P" + str(config["page_number"]) + ".tti", "a") as file:
-            write_tweet_info(file, line_position, tweet_username, tweet_human_time, config)
-            line_position += 1
-            for line in tweet_text:
-                write_tweet_line(file, line_position, line, config)
-                line_position += 11
-
-def write_search_term(twitter_object, search_term, config): # search recent tweets with a particular search term
-    statuses = twitter_object.GetSearch(term=search_term, result_type="recent", count=5)
-    line_position = 4
-
-    for status in statuses: # iterate through our responses
-        tweet_text = clean_tweet(status.text) # process the tweet text
-        tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
-        tweet_human_time = time.strftime("%d-%b-%Y %H:%M", tweet_time) # reformat time/date output
-        tweet_username = status.user.screen_name
-        tweet_text = textwrap.wrap(tweet_text, 38) # make sure our lines fit on the screen
-
-        if (line_position + len(tweet_text) + 1) > 24: # are we going to fill the page?
-            break # yep! dump the last tweet!
-
-        with open(config["tti_path"] + "P" + str(config["page_number"]) + ".tti", "a") as file:
-            write_tweet_info(file, line_position, tweet_username, tweet_human_time, config)
-            line_position += 1
-            for line in tweet_text:
-                write_tweet_line(file, line_position, line, config)
-                line_position += 1
-
-def write_user_timeline(twitter_object, username, config):
-    statuses = twitter_object.GetUserTimeline(screen_name=username, count=5)
+def write_tweets(twitter_object, mode, config, query=""): # grab the latest timeline - only 5 tweets for now
+    if mode == "home":
+        statuses = twitter_object.GetHomeTimeline(count = 5)
+    elif mode == "search":
+        statuses = twitter_object.GetSearch(term=query, result_type="recent", count=5)
+    elif mode == "user":
+        statuses = twitter_object.GetUserTimeline(screen_name=query, count=5)
     line_position = 4
 
     for status in statuses: # iterate through our responses

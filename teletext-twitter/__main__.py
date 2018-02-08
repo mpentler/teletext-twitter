@@ -24,7 +24,7 @@ def parse_args():
     parser.add_argument("-m", "--mode", type=str, help="choose between different modes - home, user or search")
     parser.add_argument("-q", "--query", type=str, help="a search query, either a search term or a username. hashtags supported if you put quotes around the string")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (minimum is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="0.6")
+    parser.add_argument("-v", "--version", action="version", version="0.7")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()
@@ -52,15 +52,15 @@ def main():
             if args.mode == "home":
                 if not args.quiet:
                     print("[*] Beginning home timeline scraping", file=sys.stdout)
-                write_home_timeline(twitter_object, config)
+                write_tweets(twitter_object, args.mode, config)
             elif args.mode == "search":
                 if not args.quiet:
                     print("[*] Getting recent tweets containing: " + args.query, file=sys.stdout)
-                write_search_term(twitter_object, args.query, config)
+                write_tweets(twitter_object, args.mode, config, args.query)
             elif args.mode == "user":
                 if not args.quiet:
                     print("[*] Getting recent tweets from user: @{}".format(args.query), file=sys.stdout)
-                write_user_timeline(twitter_object, args.query, config)
+                write_tweets(twitter_object, args.mode, config, args.query)
             if not args.quiet:
                 print("[*] Page updated. Waiting {} seconds until next scrape".format(args.delay), file=sys.stdout)
         except OSError as e:
