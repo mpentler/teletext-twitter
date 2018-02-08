@@ -59,7 +59,7 @@ def main():
                 write_search_term(twitter_object, args.query, config)
             elif args.mode == "user":
                 if not args.quiet:
-                    print("[*] Getting all tweets from user: @{}".format(args.query), file=sys.stdout)
+                    print("[*] Getting recent tweets from user: @{}".format(args.query), file=sys.stdout)
                 write_user_timeline(twitter_object, args.query, config)
             if not args.quiet:
                 print("[*] Page updated. Waiting {} seconds until next scrape".format(args.delay), file=sys.stdout)
