@@ -6,7 +6,7 @@
 import textwrap
 import re
 
-def clean_tweet(tweet): # character replacement and stripping function
+def tweet_remove_emojis(tweet): # character replacement and stripping function
     # first, get rid of as many emojis as possible
     emoji_pattern = re.compile("[" # our unicode ranges go here. this will need frequent tweaking
                               u"\U00002300-\U000023FF" # misc technical
@@ -16,11 +16,18 @@ def clean_tweet(tweet): # character replacement and stripping function
                               u"\U0001F680-\U0001F9FF" # transport & map symbols
                                "]+", flags=re.UNICODE)
     tweet = emoji_pattern.sub(r'', tweet)
-
-    # Now our character substitutions. The teletext English character set doesn't support a lot of characters!
-    tweet = tweet.replace("’", "'")
-    tweet = tweet.replace("_", "-")
-    tweet = tweet.replace("#", "_")
-    tweet = tweet.replace('“', '"')
-
     return tweet
+
+def tweet_remove_urls(tweet):
+    url_pattern = re.compile("https://\S+")
+    tweet = url_pattern.sub('[LINK]', tweet)
+    return tweet
+
+def charsub(text):
+    # Now our character substitutions. The teletext English character set doesn't support a lot of characters!
+    text = text.replace("’", "'")
+    text = text.replace("_", "-")
+    text = text.replace("#", "_")
+    text = text.replace('“', '"')
+
+    return text

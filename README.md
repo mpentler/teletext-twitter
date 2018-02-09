@@ -55,6 +55,7 @@ Finally, the title text at the top can be changed, although there is a 30 charac
 ## Notes
 * New tweets are grabbed every 60 seconds by default. This is configurable with the -d option, but you do have be aware of the Twitter API limits.
 * Emoji stripping is now included. Mostly.
+* URLs are stripped and replaced with the placeholder [LINK]
 * Due to the limited teletext character set substitutions are implemented. Things like replacing underscores with hyphens and also making sure # works correctly. You also have to replace curly apostrophes with straight ones, as that's all the specification allows
 
 Apart from those notes, things should work ok. Have fun, turn back the clock, and if you genuinely use this for anything please let me know (also you're mental/cool).

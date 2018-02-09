@@ -57,10 +57,12 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     write_header(subpage, config, "w+")
 
     for status in statuses: # iterate through our responses
-        tweet_text = clean_tweet(status.text)
+        tweet_text = tweet_remove_emojis(status.text)
+        tweet_text = tweet_remove_urls(tweet_text)
+        tweet_text = charsub(tweet_text)
         tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
         tweet_human_time = time.strftime("%d-%b-%Y %H:%M", tweet_time) # reformat time/date output
-        tweet_username = status.user.screen_name
+        tweet_username = charsub(status.user.screen_name)
         tweet_text = textwrap.wrap(tweet_text, 38) # make sure our lines fit on the screen
 
         with open(config["tti_path"] + "P" + str(config["page_number"]) + ".tti", "a") as file:

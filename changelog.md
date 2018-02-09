@@ -1,5 +1,9 @@
 ## Changelog
 
+### v0.9
+- tweet usernames now go through character substition like tweets do
+- useless hypertext links are now filtered and replaced with a placeholder
+
 ### v0.8
 - major feature addition: subpage support to handle a larger number of tweets
 - added cycle_time parameter to config, this is cycle time between subpages
