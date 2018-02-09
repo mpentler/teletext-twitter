@@ -20,9 +20,9 @@ Before you get this up and running there are two other things you need to do fir
 * VBIT2 (Peter Kwan): https://github.com/peterkvt80/vbit2
 
 ## Setup
-After getting these up and running there are some setup tasks to do. Rename config.py-default to config.py and open the file in a text editor. You need to add:
+After getting these up and running there are some setup tasks to do. Rename config.py-default to config.py and open the file in a text editor. You need to:
 
-1) Your Twitter access tokens: You can find a good guide for doing this here - https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/ You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
+1) Add your Twitter access tokens: You can find a good guide for doing this here - https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/ You will need to pick a unique name for the app. Which is annoying. Pick anything you want that isn't taken. Maybe add your name at the end.
 2) Check where your pages will be saved to: Change the tti_path line too if you've changed your Teefax location. You can also customise the page number.
 3) Change the theme if you want: Theme support is detailed below
 
@@ -34,7 +34,7 @@ When you've setup your config.py you can run the script like this example that g
 
 The script will constantly update your chosen page number (default is 153 - chosen because it used to be used for this purpose on Teefax in the past) in the main teletext folder (which defaults in VBIT2 to /home/pi/teletext/).
 
-All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets (up to 5 - space permitting!) so that it will update on your screen.
+All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets (up to 5 - space permitting!) so that it will update on your screen. Up to 99 subpages of tweets will be displayed.
 
 ## Theme support
 In the config.py file you can see a theme section. The teletext level I am using supports 7 colours:
@@ -53,7 +53,6 @@ You can also change the colours of a tweet poster's username, timestamp, and the
 Finally, the title text at the top can be changed, although there is a 30 character limit or things look wonky.
 
 ## Notes
-* At this moment in time the script reads 5 tweets. Further versions will improve on this by writing multiple tweets, possibly in subpages :-O
 * New tweets are grabbed every 60 seconds by default. This is configurable with the -d option, but you do have be aware of the Twitter API limits.
 * Emoji stripping is now included. Mostly.
 * Due to the limited teletext character set substitutions are implemented. Things like replacing underscores with hyphens and also making sure # works correctly. You also have to replace curly apostrophes with straight ones, as that's all the specification allows

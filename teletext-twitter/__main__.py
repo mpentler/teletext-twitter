@@ -23,17 +23,18 @@ def parse_args():
 
     parser.add_argument("-m", "--mode", type=str, help="choose between different modes - home, user or search")
     parser.add_argument("-q", "--query", type=str, help="a search query, either a search term or a username. hashtags supported if you put quotes around the string")
-    parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (minimum is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="0.7")
+    parser.add_argument("-c", "--count", type=int, default=5, help="number of tweets to download (default is 5, maximum is 800)")
+    parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (default is 60 seconds - lower values have no effect)")
+    parser.add_argument("-v", "--version", action="version", version="0.8")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()
+    args.count = min(args.count, 800)
     args.delay = max(60, args.delay)
 
     if args.mode == "search" and not args.query:
         print("[!] Search mode selected but no query specfied with -q. Exiting...", file=sys.stderr)
         sys.exit(1)
-
     if args.mode == "user" and not args.query:
         print("[!] User timeline mode selected but no username specified. Exiting...", file=sys.stderr)
         sys.exit(1)
@@ -48,23 +49,23 @@ def main():
 
     while True:
         try:
-            write_header(config)
             if args.mode == "home":
                 if not args.quiet:
                     print("[*] Beginning home timeline scraping", file=sys.stdout)
-                write_tweets(twitter_object, args.mode, config)
+                write_tweets(twitter_object, args.mode, args.count, config)
             elif args.mode == "search":
                 if not args.quiet:
                     print("[*] Getting recent tweets containing: " + args.query, file=sys.stdout)
-                write_tweets(twitter_object, args.mode, config, args.query)
+                write_tweets(twitter_object, args.mode, args.count, config, args.query)
             elif args.mode == "user":
                 if not args.quiet:
                     print("[*] Getting recent tweets from user: @{}".format(args.query), file=sys.stdout)
-                write_tweets(twitter_object, args.mode, config, args.query)
+                write_tweets(twitter_object, args.mode, args.count, config, args.query)
             if not args.quiet:
                 print("[*] Page updated. Waiting {} seconds until next scrape".format(args.delay), file=sys.stdout)
         except OSError as e:
-            print("[!] Error accessing teletext data file, exiting: {}".format(e.strerror), file=sys.stderr)
+            print("[!] Error accessing teletext data file, {}".format(e.strerror), file=sys.stderr)
+            print("[!] Exiting...", file=sys.stderr)
             sys.exit(1)
         except twitter.error.TwitterError as e:
             for error in e.message:

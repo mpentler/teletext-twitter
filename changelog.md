@@ -1,7 +1,14 @@
 ## Changelog
 
+### v0.8
+- major feature addition: subpage support to handle a larger number of tweets
+- added cycle_time parameter to config, this is cycle time between subpages
+- added count argument to specify number of tweets to download
+- a few more bug fixes: line 24 now writable and no more dropped tweets (they go to subpages instead)
+- moved a few bits of code around for logic and readability
+
 ### v0.7
-- compressed three different tweet output functions into one! i guess this is slower to run but i like smaller, cleaner files...
+- compressed three different tweet output functions into one!
 - fixed still display bug in write_home_timeline function
 
 ### v0.6
