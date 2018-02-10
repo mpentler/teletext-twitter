@@ -60,9 +60,9 @@ Finally, the title text string and colour at the top can be changed, although th
 
 ### Miscellaneous options
 
-tti_path: (default: "/home/pi/teletext/") - the path your pages will be saved to
-page_number: (default: 153) - the page number to use
-cycle_time: (default: 20) - approximate time in seconds between subpages
+- tti_path: (default: "/home/pi/teletext/") - the path your pages will be saved to
+- page_number: (default: 153) - the page number to use
+- cycle_time: (default: 20) - approximate time in seconds between subpages
 
 ## Notes
 * New tweets are grabbed every 60 seconds by default. This is configurable with the -d option, but you do have be aware of the Twitter API limits. 60 seconds is the minimum

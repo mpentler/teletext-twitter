@@ -7,7 +7,7 @@ access_key = "XXXXXXXX-xxXXxXXxxXxxxXxXXxXxXxXxxxXxxxxXxXXxXxxXX"
 access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
 
 # theme section
-# page title - 27 chars maximum
+# page title - 30 chars maximum
 page_title = "TELETEXT TWITTER"
 # display colours - must be in quotes! allowed colours are:
 # red, green, yellow, blue, magenta, cyan, white

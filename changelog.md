@@ -5,6 +5,7 @@
 - reduced max tweet download limit to 200 as the twitter API doesnt let you do anymore
 - added check to see if more than 99 pages will be generated
 - add page_title_colour option to config.py
+- happy with the documentation now!
 
 ### v0.9
 - tweet usernames now go through character substition like tweets do
