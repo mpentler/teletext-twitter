@@ -51,15 +51,15 @@ def main():
         try:
             if args.mode == "home":
                 if not args.quiet:
-                    print("[*] Beginning home timeline scraping", file=sys.stdout)
+                    print("[*] Getting {} most recent tweets from your home timeline".format(args.count), file=sys.stdout)
                 write_tweets(twitter_object, args.mode, args.count, config)
             elif args.mode == "search":
                 if not args.quiet:
-                    print("[*] Getting recent tweets containing: " + args.query, file=sys.stdout)
+                    print("[*] Getting {} most recent tweets containing: {}".format(args.count, args.query), file=sys.stdout)
                 write_tweets(twitter_object, args.mode, args.count, config, args.query)
             elif args.mode == "user":
                 if not args.quiet:
-                    print("[*] Getting recent tweets from user: @{}".format(args.query), file=sys.stdout)
+                    print("[*] Getting {} most recent tweets from user: @{}".format(args.count, args.query), file=sys.stdout)
                 write_tweets(twitter_object, args.mode, args.count, config, args.query)
             if not args.quiet:
                 print("[*] Page updated. Waiting {} seconds until next scrape".format(args.delay), file=sys.stdout)

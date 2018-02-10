@@ -1,13 +1,13 @@
 # teletext-twitter - creates pages for vbit2 teletext system
 # (c) Mark Pentler 2018 (https://github.com/mpentler)
 # see README.md for details on getting it running or run with -h
-# tweet processor module
+# text processor module
 
 import textwrap
 import re
 
-def tweet_remove_emojis(tweet): # character replacement and stripping function
-    # first, get rid of as many emojis as possible
+def tweet_remove_emojis(tweet):
+    # remove pesky emoji characters
     emoji_pattern = re.compile("[" # our unicode ranges go here. this will need frequent tweaking
                               u"\U00002300-\U000023FF" # misc technical
                               u"\U000024C2-\U0001F251" # enclosed characters including flags
@@ -19,6 +19,7 @@ def tweet_remove_emojis(tweet): # character replacement and stripping function
     return tweet
 
 def tweet_remove_urls(tweet):
+    # all tweets are https t.co links, so this is all we need
     url_pattern = re.compile("https://\S+")
     tweet = url_pattern.sub('[LINK]', tweet)
     return tweet
@@ -28,6 +29,4 @@ def charsub(text):
     text = text.replace("’", "'")
     text = text.replace("_", "-")
     text = text.replace("#", "_")
-    text = text.replace('“', '"')
-
     return text
