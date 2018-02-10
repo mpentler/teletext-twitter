@@ -81,10 +81,10 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
         tweet_text = tweet_remove_emojis(status.text)
         tweet_text = tweet_remove_urls(tweet_text)
         tweet_text = charsub(tweet_text)
+        tweet_text = textwrap.wrap(tweet_text, 38) # make sure our lines fit on the screen
         tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
         tweet_human_time = time.strftime("%d-%b-%Y %H:%M", tweet_time) # reformat time/date output
         tweet_username = charsub(status.user.screen_name)
-        tweet_text = textwrap.wrap(tweet_text, 38) # make sure our lines fit on the screen
 
         with open(filename, "a") as file:
             post_length = len(tweet_text) + 1 # how long is our next tweet? (including info line)

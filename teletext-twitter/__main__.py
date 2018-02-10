@@ -23,7 +23,7 @@ def parse_args():
 
     parser.add_argument("-m", "--mode", type=str, help="choose between different modes - home, user or search")
     parser.add_argument("-q", "--query", type=str, help="a search query, either a search term or a username. hashtags supported if you put quotes around the string")
-    parser.add_argument("-c", "--count", type=int, default=5, help="number of tweets to download (default is 5, maximum is 200)")
+    parser.add_argument("-c", "--count", type=int, default=5, help="number of tweets to download (default is 5, capped at 200)")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (default is 60 seconds - lower values have no effect)")
     parser.add_argument("-v", "--version", action="version", version="1.0")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
