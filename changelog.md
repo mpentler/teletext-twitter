@@ -3,6 +3,7 @@
 ### v0.9
 - tweet usernames now go through character substition like tweets do
 - useless hypertext links are now filtered and replaced with a placeholder
+- blank lines now written to fill page, no more fasttext links inserted by TVs on line 24 by default if you don't specify any
 
 ### v0.8
 - major feature addition: subpage support to handle a larger number of tweets
