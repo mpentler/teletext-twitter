@@ -2,11 +2,7 @@
 
 ### Introduction 
 
-I welcome submissions to the project! Features additions are especially welcome:
-
-* I'm not sure how much more functionality is really needed on the Twitter side.
-* Ideas for improvements to the teletext side are to improve the Unicode stripping on tweets to improve compatibility with the teletext character set.
-* Bug fixes or code improvements would also be good.
+I welcome submissions to the project! I consider the software feature-complete, but bug fixes or code improvements would be good.
 
 ### Guidelines
 

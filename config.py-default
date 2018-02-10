@@ -11,6 +11,7 @@ access_secret = "XxXXXXXXXXxxxXXXxXXxXxXxxXXXXXxXxxXXXXx"
 page_title = "TELETEXT TWITTER"
 # display colours - must be in quotes! allowed colours are:
 # red, green, yellow, blue, magenta, cyan, white
+page_title_colour = "white"
 header_colour = "blue"
 header_separator = "cyan"
 tweet_colour = "white"
