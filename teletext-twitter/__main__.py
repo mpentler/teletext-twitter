@@ -25,7 +25,8 @@ def parse_args():
     parser.add_argument("-q", "--query", type=str, help="a search query, either a search term or a username. hashtags supported if you put quotes around the string")
     parser.add_argument("-c", "--count", type=int, default=5, help="number of tweets to download (default is 5, capped at 200)")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (default is 60 seconds - lower values have no effect)")
-    parser.add_argument("-v", "--version", action="version", version="1.0")
+    parser.add_argument("-n", "--no-repeat", action="store_true", default=False, help="only download tweets once - overrules -d switch")
+    parser.add_argument("-v", "--version", action="version", version="1.0.1")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()
@@ -43,6 +44,7 @@ def parse_args():
 
 def main():
     args = parse_args()
+    print(args)
 
     if not args.quiet:
         print("[*] teletext-twitter - (c) 2018 Mark Pentler (https://github.com/mpentler)", file=sys.stdout)
@@ -75,7 +77,12 @@ def main():
                     sys.exit(1)
                 print("[!] Error accessing your Twitter timeline: {}".format(error['message']), file=sys.stderr)
                 print("[!] Trying again after specified delay", file=sys.stderr)
-        time.sleep(args.delay)
+        if not args.no_repeat:
+            time.sleep(args.delay)
+        else:
+            if not args.quiet:
+                print("[*] No repeat mode enabled. Exiting...", file=sys.stdout)
+            sys.exit(1)
 
 if __name__ == '__main__':
     try:

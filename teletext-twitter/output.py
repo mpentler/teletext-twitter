@@ -83,14 +83,15 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
         tweet_text = charsub(tweet_text)
         tweet_text = textwrap.wrap(tweet_text, 38) # make sure our lines fit on the screen
         tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
-        tweet_human_time = time.strftime("%d-%b-%Y %H:%M", tweet_time) # reformat time/date output
+        tweet_human_time = time.strftime("%d-%b-%Y %H:%S", tweet_time) # reformat time/date output
         tweet_username = charsub(status.user.screen_name)
 
         with open(filename, "a") as file:
             post_length = len(tweet_text) + 1 # how long is our next tweet? (including info line)
             if (line_position + post_length) > 25: # are we about to go over the page?
                 for blankline_position in range(line_position, 25): # how many blank lines do we need?
-                    file.write("OL,{},\r\n".format(blankline_position))
+                    file.write("OL,{},".format(blankline_position) + (" " * 15) + "\r\n")
+                file.write("FL,0,0,0,0,0,100\r\n")
                 subpage += 1 # start a new page
                 if subpage > 99:
                     break # reached subpage limit - dump the rest

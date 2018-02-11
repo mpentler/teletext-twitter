@@ -75,8 +75,8 @@ Apart from those notes, things should work ok. Have fun, turn back the clock, an
 ### -h/--help output
 
 <pre>
-usage: teletext-twitter [-h] [-m MODE] [-q QUERY] [-c COUNT] [-d DELAY] [-v]
-                        [-Q]
+usage: teletext-twitter [-h] [-m MODE] [-q QUERY] [-c COUNT] [-d DELAY] [-n]
+                        [-v] [-Q]
 
 Reads your Twitter timeline and turns it into teletext pages for your
 Raspberry Pi.
@@ -88,11 +88,12 @@ optional arguments:
                         a search query, either a search term or a username.
                         hashtags supported if you put quotes around the string
   -c COUNT, --count COUNT
-                        number of tweets to download (default is 5, maximum is
+                        number of tweets to download (default is 5, capped at
                         200)
   -d DELAY, --delay DELAY
                         seconds between timeline scrapes (default is 60
                         seconds - lower values have no effect)
+  -n, --no-repeat       only download tweets once - overrules -d switch
   -v, --version         show program's version number and exit
   -Q, --quiet           suppresses all output to the terminal except warnings
                         and errors

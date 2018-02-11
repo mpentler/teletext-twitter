@@ -1,5 +1,10 @@
 ## Changelog
 
+### v1.0.1
+- added a new switch -n/--no-repeat which only downloads tweets once and exits
+- OK, *now* fasttext links have been suppressed
+- some old bugs crept back in. fixed
+
 ### v1.0
 - improved subpage counter in the header
 - reduced max tweet download limit to 200 as the twitter API doesnt let you do anymore
