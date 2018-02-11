@@ -76,7 +76,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
         tweet_text = charsub(tweet_text)
         tweet_text = textwrap.wrap(tweet_text, 38)
         post_length = len(tweet_text) + 1
-        if (line_position + post_length) > 25:
+        if (line_position + post_length) > 24:
             subpage += 1
             if subpage > 99:
                 break # reached subpage limit - no point checking the rest
@@ -102,7 +102,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
 
         with open(filename, "a") as file:
             post_length = len(tweet_text) + 1 # how long is our next tweet? (including info line)
-            if (line_position + post_length) > 25: # are we about to go over the page?
+            if (line_position + post_length) > 24: # are we about to go over the page?
                 for blankline_position in range(line_position, 25): # how many blank lines do we need?
                     file.write("OL,{},".format(blankline_position) + (" " * 15) + "\r\n")
                 file.write("FL,0,0,0,0,0,100\r\n")
