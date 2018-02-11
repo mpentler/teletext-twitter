@@ -44,6 +44,8 @@ enhancementmapping = {
     # map to L1 replacement, enhancement mode, enhancement data
     
     "£":[0x23,0,0],
+    "–":[0x60,0,0],
+    "—":[0x60,0,0],
     "÷":[0x7e,0,0],
     "#":[0x5F,0,0],
     "[":[0x28,0x10,0x5b],
