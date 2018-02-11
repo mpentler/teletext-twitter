@@ -26,7 +26,7 @@ def parse_args():
     parser.add_argument("-c", "--count", type=int, default=5, help="number of tweets to download (default is 5, capped at 200)")
     parser.add_argument("-d", "--delay", type=int, default=60, help="seconds between timeline scrapes (default is 60 seconds - lower values have no effect)")
     parser.add_argument("-n", "--no-repeat", action="store_true", default=False, help="only download tweets once - overrules -d switch")
-    parser.add_argument("-v", "--version", action="version", version="1.0.1")
+    parser.add_argument("-v", "--version", action="version", version="1.0.2")
     parser.add_argument("-Q", "--quiet", action="store_true", default=False, help="suppresses all output to the terminal except warnings and errors")
 
     args = parser.parse_args()

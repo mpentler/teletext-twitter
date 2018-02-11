@@ -1,5 +1,8 @@
 ## Changelog
 
+### v1.0.2
+- removed debug message
+
 ### v1.0.1
 - added a new switch -n/--no-repeat which only downloads tweets once and exits
 - OK, *now* fasttext links have been suppressed
