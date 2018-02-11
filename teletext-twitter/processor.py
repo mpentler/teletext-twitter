@@ -25,10 +25,31 @@ def tweet_remove_urls(tweet):
     return tweet
 
 def charsub(text):
-    # Now our character substitutions. The teletext English character set doesn't support a lot of characters!
-    text = text.replace("’", "'")
-    text = text.replace("_", "-")
-    text = text.replace("#", "_")
-    text = text.replace("“", "\"")
+    # do any substitutitons that will change the length of the text
     text = text.replace("…", "...")
+    
+    # these could be enhanced but this will save packets
+    text = text.replace("’", "'")
+    text = text.replace("‘", "'")
+    text = text.replace("“", "\"")
+    text = text.replace("”", "\"")
     return text
+
+enhancementmapping = {
+    # map to L1 replacement, enhancement mode, enhancement data
+    "#":[0x5F,0,0],
+    "_":[0x2D,0x10,0x5F]
+    #todo: lots more mappings!
+}
+
+def charenhance(text,offset):
+    newtext = ""
+    enhancements = []
+    for index, char in enumerate(text):
+        newchar = enhancementmapping.get(char, [ord(char),0,0])
+        if newchar[0] > 127:
+            newchar = [0x7F,0,0] # blank unknown unicode characters
+        newtext += chr(newchar[0])
+        if (newchar[1]):
+            enhancements.append([index+offset,newchar[1],newchar[2]])
+    return newtext,enhancements

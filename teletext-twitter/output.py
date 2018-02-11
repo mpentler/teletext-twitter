@@ -43,6 +43,19 @@ def write_header(file, subpage, max_subpages, config): # write a header for the 
                logo_spacer + ESCAPE + chr(mosaic_colours["cyan"]) + TWITTER_BIRD + "\r\n")
     file.write("OL,3," + ESCAPE + chr(mosaic_colours[config["header_separator"]]) + (chr(35) * 39) + "\r\n")
 
+def write_ehancements(file, enhancements):
+    for p in range(15): # up to 15 packets
+        packet = "OL,26," + chr(0x40 + p)
+        for e in range(13): # up to 13 triplets
+            if len(enhancements) > p*13+e:
+                triplet = enhancements[p*13+e][0] | ((enhancements[p*13+e][1]) << 6) | ((enhancements[p*13+e][2]) << 11)
+                packet+=chr(0x40+(triplet&0x3F))+chr(0x40+((triplet>>6)&0x3F))+chr(0x40+((triplet>>12)&0x3F))
+            elif e == 0:
+                return
+            else:
+                packet+=chr(0x7f)+chr(0x7f)+chr(0x7f)
+        file.write(packet+"\r\n")
+
 def write_tweets(twitter_object, mode, count, config, query=None): # grab the latest timeline
     if mode == "home":
         statuses = twitter_object.GetHomeTimeline(count=count)
@@ -76,6 +89,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     with open(filename, "w+") as file:
         write_header(file, subpage, max_subpages, config)
     line_position = 4
+    subpage_enhancements = []
 
     for status in statuses: # iterate through our responses
         tweet_text = tweet_remove_emojis(status.text)
@@ -92,13 +106,24 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
                 for blankline_position in range(line_position, 25): # how many blank lines do we need?
                     file.write("OL,{},".format(blankline_position) + (" " * 15) + "\r\n")
                 file.write("FL,0,0,0,0,0,100\r\n")
+                if subpage_enhancements:
+                    write_ehancements(file, subpage_enhancements)
                 subpage += 1 # start a new page
+                subpage_enhancements = []
                 if subpage > 99:
                     break # reached subpage limit - dump the rest
                 write_header(file, subpage, max_subpages, config)
                 line_position = 4 # and reset our cursor
-            write_tweet_info(file, line_position, tweet_username, tweet_human_time, config)
+            tweet_username_enhanced = charenhance(tweet_username,(37-len(tweet_human_time)-len(tweet_username)))
+            if tweet_username_enhanced[1]:
+                subpage_enhancements.append([line_position+40,4,0]) # active position to start of row
+                subpage_enhancements += tweet_username_enhanced[1]
+            write_tweet_info(file, line_position, tweet_username_enhanced[0], tweet_human_time, config)
             line_position += 1
             for line in tweet_text:
-                write_tweet_line(file, line_position, line, config)
+                tweet_text_line = charenhance(line,1)
+                if tweet_text_line[1]:
+                    subpage_enhancements.append([line_position+40,4,0]) # active position to start of row
+                    subpage_enhancements += tweet_text_line[1]
+                write_tweet_line(file, line_position, tweet_text_line[0], config)
                 line_position += 1
