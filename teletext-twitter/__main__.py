@@ -44,7 +44,6 @@ def parse_args():
 
 def main():
     args = parse_args()
-    print(args)
 
     if not args.quiet:
         print("[*] teletext-twitter - (c) 2018 Mark Pentler (https://github.com/mpentler)", file=sys.stdout)
