@@ -1,5 +1,8 @@
 ## Changelog
 
+### v1.0.3
+- script now exits with correct returncode in no-repeat mode
+
 ### v1.0.2
 - removed debug message
 

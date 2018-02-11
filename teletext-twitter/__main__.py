@@ -81,7 +81,7 @@ def main():
         else:
             if not args.quiet:
                 print("[*] No repeat mode enabled. Exiting...", file=sys.stdout)
-            sys.exit(1)
+            sys.exit(0)
 
 if __name__ == '__main__':
     try:
