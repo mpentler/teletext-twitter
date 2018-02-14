@@ -109,7 +109,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
                 subpage += 1 # start a new page
                 subpage_enhancements = []
                 if subpage > 99:
-                    break # reached subpage limit - dump the rest
+                    return # reached subpage limit - dump the rest
                 write_header(file, subpage, max_subpages, config)
                 line_position = 4 # and reset our cursor
             tweet_username_enhanced = charenhance(tweet_username,(37-len(tweet_human_time)-len(tweet_username)))
@@ -125,3 +125,9 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
                     subpage_enhancements += tweet_text_line[1]
                 write_tweet_line(file, line_position, tweet_text_line[0], config)
                 line_position += 1
+    
+    # finish the last subpage
+    with open(filename, "a", newline="") as file:
+        file.write("FL,0,0,0,0,0,100\r\n")
+        if subpage_enhancements:
+            write_ehancements(file, subpage_enhancements)
