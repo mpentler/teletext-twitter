@@ -31,7 +31,7 @@ When you've setup your config.py you can run the script like this example that g
 
 The script will constantly update your chosen page number (default is 153 - chosen because it used to be used for this purpose on Teefax in the past) in the main teletext folder (which defaults in VBIT2 to /home/pi/teletext/).
 
-All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets (up to 5 - space permitting!) so that it will update on your screen. Up to 99 subpages of tweets will be displayed - any further tweets will be dropped. Tweets are truncated for space reasons. You kinda have to, really...
+All of the files in that folder are sent across to the TV every so often, therefore the script constantly overwrites it with new tweets so that it will update on your screen. Up to 99 subpages of tweets will be displayed - any further tweets will be dropped. Tweets are truncated for space reasons. You kinda have to, really...
 
 ## Config options
 
