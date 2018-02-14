@@ -26,6 +26,7 @@ def tweet_remove_urls(tweet):
 
 def charsub(text):
     # do any substitutitons that will change the length of the text
+    # mapping to different characters and level 1.5 enhancement will take place later
     text = text.replace("…", "...")
     text = text.replace("Ǆ", "DŽ")
     text = text.replace("ǅ", "Dž")
@@ -41,7 +42,7 @@ def charsub(text):
     return text
 
 enhancementmapping = {
-    # map to L1 replacement, enhancement mode, enhancement data
+    # map to L1 replacement character, enhancement mode, enhancement data
     
     "£":[0x23,0,0],
     "–":[0x60,0,0],
@@ -131,6 +132,7 @@ enhancementmapping = {
 }
 
 def charenhance(text,offset):
+    # replace characters in text string for the level 1 page, and return a list of enhancement triplets
     newtext = ""
     enhancements = []
     for index, char in enumerate(text):

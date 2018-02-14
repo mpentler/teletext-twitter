@@ -44,13 +44,15 @@ def write_header(file, subpage, max_subpages, config): # write a header for the 
     file.write("OL,3," + ESCAPE + chr(mosaic_colours[config["header_separator"]]) + (chr(35) * 39) + "\r\n")
 
 def write_ehancements(file, enhancements):
-    for p in range(15): # up to 15 packets
-        packet = "OL,26," + chr(0x40 + p)
-        for e in range(13): # up to 13 triplets
+    for p in range(15): # up to 15 enhancement packets per subpage
+        packet = "OL,26," + chr(0x40 + p) # first byte is designation code
+        for e in range(13): # up to 13 triplets per enhancement packet
             if len(enhancements) > p*13+e:
+                # combine parts of enhancement data into an 18 byte triplet, then slice it up into three 6 byte values to write to the row with bit 6 set
                 triplet = enhancements[p*13+e][0] | ((enhancements[p*13+e][1]) << 6) | ((enhancements[p*13+e][2]) << 11)
                 packet+=chr(0x40+(triplet&0x3F))+chr(0x40+((triplet>>6)&0x3F))+chr(0x40+((triplet>>12)&0x3F))
             elif e == 0:
+                # TODO: generate packet of terminators if previous packet is full.
                 return
             else:
                 packet+=chr(0x7f)+chr(0x7f)+chr(0x7f)
