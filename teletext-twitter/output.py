@@ -75,6 +75,8 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     for status in statuses:
         tweet_text = tweet_remove_emojis(status.text)
         tweet_text = tweet_remove_urls(tweet_text)
+        if mode == "search":
+            tweet_text = tweet_highlight_query(tweet_text, query, config)
         tweet_text = charsub(tweet_text)
         tweet_text = textwrap.wrap(tweet_text, 38)
         post_length = len(tweet_text) + 1
@@ -96,6 +98,8 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     for status in statuses: # iterate through our responses
         tweet_text = tweet_remove_emojis(status.text)
         tweet_text = tweet_remove_urls(tweet_text)
+        if mode == "search":
+            tweet_text = tweet_highlight_query(tweet_text, query, config)
         tweet_text = charsub(tweet_text)
         tweet_text = textwrap.wrap(tweet_text, 38) # make sure our lines fit on the screen
         tweet_time = time.strptime(status.created_at,"%a %b %d %H:%M:%S +0000 %Y")
