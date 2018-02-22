@@ -43,7 +43,7 @@ def write_header(file, subpage, max_subpages, config): # write a header for the 
                logo_spacer + ESCAPE + chr(mosaic_colours["cyan"]) + TWITTER_BIRD + "\r\n")
     file.write("OL,3," + ESCAPE + chr(mosaic_colours[config["header_separator"]]) + (chr(35) * 39) + "\r\n")
 
-def write_ehancements(file, enhancements):
+def write_enhancements(file, enhancements):
     for p in range(15): # up to 15 enhancement packets per subpage
         packet = "OL,26," + chr(0x40 + p) # first byte is designation code
         for e in range(13): # up to 13 triplets per enhancement packet
@@ -111,7 +111,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
             if (line_position + post_length) > 24: # are we about to go over the page?
                 file.write("FL,0,0,0,0,0,100\r\n")
                 if subpage_enhancements:
-                    write_ehancements(file, subpage_enhancements)
+                    write_enhancements(file, subpage_enhancements)
                 subpage += 1 # start a new page
                 subpage_enhancements = []
                 if subpage > 99:
@@ -136,4 +136,4 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     with open(filename, "a", newline="") as file:
         file.write("FL,0,0,0,0,0,100\r\n")
         if subpage_enhancements:
-            write_ehancements(file, subpage_enhancements)
+            write_enhancements(file, subpage_enhancements)
