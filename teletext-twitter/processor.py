@@ -6,6 +6,9 @@
 import textwrap
 import re
 
+ESCAPE = chr(27)
+text_colours = {"red" : 65, "green" : 66, "yellow" : 67 , "blue" : 68, "magenta" : 69, "cyan" : 70, "white" : 71}
+
 def tweet_remove_emojis(tweet):
     # remove pesky emoji characters
     emoji_pattern = re.compile("[" # our unicode ranges go here. this will need frequent tweaking
@@ -22,6 +25,11 @@ def tweet_remove_urls(tweet):
     # all tweets are https t.co links, so this is all we need
     url_pattern = re.compile("https://\S+")
     tweet = url_pattern.sub('[LINK]', tweet)
+    return tweet
+
+def tweet_highlight_query(tweet, query, config):
+    tweet = tweet.replace((" " + query + " "),
+                          (ESCAPE + chr(text_colours[config["search_highlight"]]) + query + ESCAPE + chr(text_colours[config["tweet_colour"]])))
     return tweet
 
 def charsub(text):

@@ -1,5 +1,8 @@
 ## Changelog
 
+### v1.0.4
+- added query highlighting in search mode
+
 ### v1.0.3
 - script now exits with correct returncode in no-repeat mode
 

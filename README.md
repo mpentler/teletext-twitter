@@ -53,7 +53,8 @@ You can change the colours of:
 - the page title
 - tweeter's usernames
 - tweet timestamps
-- the text of the tweet itself.
+- the text of the tweet itself
+- the highlight used on search queries
 
 Finally, the title text string and colour at the top can be changed, although there is a 30 character limit or things look wonky.
 

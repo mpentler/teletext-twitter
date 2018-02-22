@@ -12,11 +12,12 @@ page_title = "TELETEXT TWITTER"
 # display colours - must be in quotes! allowed colours are:
 # red, green, yellow, blue, magenta, cyan, white
 page_title_colour = "white"
-header_colour = "blue"
-header_separator = "cyan"
+header_colour = "red"
+header_separator = "magenta"
 tweet_colour = "white"
-username_colour = "blue"
-timestamp_colour = "yellow"
+username_colour = "cyan"
+timestamp_colour = "cyan"
+search_highlight = "yellow"
 
 # miscellaneous
 tti_path = "/home/pi/teletext/"
