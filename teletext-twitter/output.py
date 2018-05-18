@@ -131,7 +131,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
                     subpage_enhancements += tweet_text_line[1]
                 write_tweet_line(file, line_position, tweet_text_line[0], config)
                 line_position += 1
-    
+
     # finish the last subpage
     with open(filename, "a", newline="") as file:
         file.write("FL,0,0,0,0,0,100\r\n")
