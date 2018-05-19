@@ -1,7 +1,7 @@
 # teletext-twitter
 Display Twitter timelines or searches for tweets and turns them into teletext pages for your Raspberry Pi
 
-![Screenshot](https://i.imgur.com/18rMJVq.jpg "Screenshot 1")
+![Screenshot](https://i.imgur.com/yPKagm8.jpg "Screenshot 1")
 
 ## What is this?
 Useless, for a start.. But if you've ever had the desire to read your tweets by pushing the teletext button on your remote and keying a page number then this is the package for you! Retro chic for the social media generation!
@@ -69,7 +69,7 @@ Finally, the title text string and colour at the top can be changed, although th
 * Up to 99 subpages are written.
 * Emoji stripping is now included. Mostly.
 * URLs are stripped and replaced with the placeholder [LINK]
-* Due to the limited teletext character set substitutions are implemented. Things like replacing underscores with hyphens and also making sure # works correctly. You also have to replace curly apostrophes with straight ones, as that's all the specification allows
+* Level 1.5 teletext is supported - meaning more characters are now supported! There you go, Europeans!
 
 Apart from those notes, things should work ok. Have fun, turn back the clock, and if you genuinely use this for anything please let me know (also you're mental/cool).
 

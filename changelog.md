@@ -1,5 +1,9 @@
 ## Changelog
 
+## v1.1.0
+- a major update! alistair cree had added level 1.5 teletext support
+  this effectively means that more characters are supported. Europe rejoice!
+
 ### v1.0.4
 - added query highlighting in search mode
 
