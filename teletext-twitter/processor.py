@@ -43,8 +43,8 @@ def charsub(text):
 
     # map similar characters to one canonical unicode point
     text = text.replace("€", "₠")
-    text = re.sub("[··᛫•‧∙⋅⋅⸱⸳・ꞏ]","·",text,flags=re.UNICODE)
-    text = re.sub("[–——]","―",text,flags=re.UNICODE)
+    text = re.sub("[··᛫‧∙⋅⋅⸱⸳・ꞏ]","·",text,flags=re.UNICODE)
+    text = text.replace("•", "●")
     text = text.replace("Ș", "Ş")
     text = text.replace("ș", "ş")
     text = text.replace("Å", "Å")
@@ -210,6 +210,17 @@ enhancementmapping = {
     "þ":[0x7f,0x0F,0x7c],
     "ŧ":[0x4f,0x0F,0x7d],
     "ŋ":[0x7f,0x0F,0x7e],
+    
+    # G1 mosaics
+    "▌":[0x7f,0x01,0x35],
+    "▐":[0x7f,0x01,0x6a],
+    "█":[0x7f,0x01,0x7f],
+    
+    # G3 smooth mosaics and line drawing set
+    "▒":[0x7f,0x02,0x2f],
+    "●":[0x7f,0x02,0x4D],
+    "⬤":[0x7f,0x02,0x4E],
+    "◯":[0x4f,0x02,0x4F],
     
     #todo: more mappings
 }
