@@ -38,6 +38,7 @@ def write_header(file, subpage, max_subpages, config): # write a header for the 
         file.write("CT," + str(config["cycle_time"]) + ",T\r\n")
     file.write("PN," + str(config["page_number"]) + "{:02}\r\n".format(subpage))
     file.write("SC,00" + "{:02}\r\n".format(subpage))
+    file.write("OL,28,@@@|gpCu_@|wKpZA`UB_wLs_w}ww]_oh_wM@@\r\n") # define CLUT3:6 as twitter blue for enhanced logo
     file.write("OL,1," + ESCAPE + chr(text_colours[config["header_colour"]]) + SET_BACKGROUND +
                DOUBLE_HEIGHT + ESCAPE + chr(text_colours[config["page_title_colour"]]) + page_title +
                logo_spacer + ESCAPE + chr(mosaic_colours["cyan"]) + TWITTER_BIRD + "\r\n")
