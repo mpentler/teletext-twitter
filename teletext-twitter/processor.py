@@ -48,6 +48,8 @@ def charsub(text):
     text = text.replace("Ș", "Ş")
     text = text.replace("ș", "ş")
     text = text.replace("Å", "Å")
+    text = text.replace("„", "”")
+    text = text.replace("‟", "“")
     
     return text
 
@@ -141,8 +143,8 @@ enhancementmapping = {
     # 0x26 character already present in English NOS
     "§":[0x53,0x0F,0x27],
     # 0x28 already mapped from G0 set
-    "‘":[0x27,0x0F,0x28],
-    "“":[0x22,0x0F,0x29],
+    "‘":[0x27,0x0F,0x29],
+    "“":[0x22,0x0F,0x2a],
     "«":[0x3c,0x0F,0x2b],
     # 0x2c character already present in English NOS
     # 0x2d character already present in English NOS
