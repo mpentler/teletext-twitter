@@ -51,6 +51,7 @@ def charsub(text):
     text = text.replace("Å", "Å")
     text = text.replace("„", "”")
     text = text.replace("‟", "“")
+    text = re.sub("[‒–—]","―",text,flags=re.UNICODE) # dashes to horizontal bar
     
     return text
 
