@@ -16,7 +16,8 @@ twitter_object = twitter.Api(access_token_key = config["access_key"],
                       access_token_secret = config["access_secret"],
                       consumer_key = config["consumer_key"],
                       consumer_secret = config["consumer_secret"],
-                      sleep_on_rate_limit = True) # so we don't hit the rate limit and raise an exception
+                      sleep_on_rate_limit = True, # so we don't hit the rate limit and raise an exception
+                      tweet_mode='extended')
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Reads your Twitter timeline and turns it into teletext pages for your Raspberry Pi.")

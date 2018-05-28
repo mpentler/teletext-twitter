@@ -74,7 +74,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     # write - is there a better way of doing this?
     line_position = 4
     for status in statuses:
-        tweet_text = tweet_remove_emojis(status.text)
+        tweet_text = tweet_remove_emojis(status.full_text)
         tweet_text = tweet_remove_urls(tweet_text)
         if mode == "search":
             tweet_text = tweet_highlight_query(tweet_text, query, config)
@@ -97,7 +97,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     subpage_enhancements = []
 
     for status in statuses: # iterate through our responses
-        tweet_text = tweet_remove_emojis(status.text)
+        tweet_text = tweet_remove_emojis(status.full_text)
         tweet_text = tweet_remove_urls(tweet_text)
         if mode == "search":
             tweet_text = tweet_highlight_query(tweet_text, query, config)
