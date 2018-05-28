@@ -40,6 +40,7 @@ def charsub(text):
     text = text.replace("ǆ", "dž")
     text = text.replace("&lt;", "<")
     text = text.replace("&gt;", ">")
+    text = text.replace("&amp;", "&")
 
     # map similar characters to one canonical unicode point
     text = text.replace("€", "₠")
