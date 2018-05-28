@@ -24,7 +24,7 @@ def tweet_remove_emojis(tweet):
 def tweet_remove_urls(tweet):
     # all tweets are https t.co links, so this is all we need
     url_pattern = re.compile("https://\S+")
-    tweet = url_pattern.sub('[LINK]', tweet)
+    tweet = url_pattern.sub('<LINK>', tweet)
     return tweet
 
 def tweet_highlight_query(tweet, query, config):
