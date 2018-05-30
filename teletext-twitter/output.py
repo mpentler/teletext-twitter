@@ -38,6 +38,7 @@ def write_header(file, subpage, max_subpages, config): # write a header for the 
         file.write("CT," + str(config["cycle_time"]) + ",T\r\n")
     file.write("PN," + str(config["page_number"]) + "{:02}\r\n".format(subpage))
     file.write("SC,00" + "{:02}\r\n".format(subpage))
+    file.write("OL,28,@@@|gpCu_@|wKpZA`UB_wLs_w}ww]_oh_wM@@\r\n") # define CLUT3:6 as twitter blue for enhanced logo
     file.write("OL,1," + ESCAPE + chr(text_colours[config["header_colour"]]) + SET_BACKGROUND +
                DOUBLE_HEIGHT + ESCAPE + chr(text_colours[config["page_title_colour"]]) + page_title +
                logo_spacer + ESCAPE + chr(mosaic_colours["cyan"]) + TWITTER_BIRD + "\r\n")
@@ -73,7 +74,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     # write - is there a better way of doing this?
     line_position = 4
     for status in statuses:
-        tweet_text = tweet_remove_emojis(status.text)
+        tweet_text = tweet_remove_emojis(status.full_text)
         tweet_text = tweet_remove_urls(tweet_text)
         if mode == "search":
             tweet_text = tweet_highlight_query(tweet_text, query, config)
@@ -96,7 +97,7 @@ def write_tweets(twitter_object, mode, count, config, query=None): # grab the la
     subpage_enhancements = []
 
     for status in statuses: # iterate through our responses
-        tweet_text = tweet_remove_emojis(status.text)
+        tweet_text = tweet_remove_emojis(status.full_text)
         tweet_text = tweet_remove_urls(tweet_text)
         if mode == "search":
             tweet_text = tweet_highlight_query(tweet_text, query, config)

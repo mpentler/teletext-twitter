@@ -24,7 +24,7 @@ def tweet_remove_emojis(tweet):
 def tweet_remove_urls(tweet):
     # all tweets are https t.co links, so this is all we need
     url_pattern = re.compile("https://\S+")
-    tweet = url_pattern.sub('[LINK]', tweet)
+    tweet = url_pattern.sub('<LINK>', tweet)
     return tweet
 
 def tweet_highlight_query(tweet, query, config):
@@ -40,14 +40,18 @@ def charsub(text):
     text = text.replace("ǆ", "dž")
     text = text.replace("&lt;", "<")
     text = text.replace("&gt;", ">")
+    text = text.replace("&amp;", "&")
 
     # map similar characters to one canonical unicode point
     text = text.replace("€", "₠")
-    text = re.sub("[··᛫•‧∙⋅⋅⸱⸳・ꞏ]","·",text,flags=re.UNICODE)
-    text = re.sub("[–——]","―",text,flags=re.UNICODE)
+    text = re.sub("[··᛫‧∙⋅⋅⸱⸳・ꞏ]","·",text,flags=re.UNICODE)
+    text = text.replace("•", "●")
     text = text.replace("Ș", "Ş")
     text = text.replace("ș", "ş")
     text = text.replace("Å", "Å")
+    text = text.replace("„", "”")
+    text = text.replace("‟", "“")
+    text = re.sub("[‒–—]","―",text,flags=re.UNICODE) # dashes to horizontal bar
     
     return text
 
@@ -141,8 +145,8 @@ enhancementmapping = {
     # 0x26 character already present in English NOS
     "§":[0x53,0x0F,0x27],
     # 0x28 already mapped from G0 set
-    "‘":[0x27,0x0F,0x28],
-    "“":[0x22,0x0F,0x29],
+    "‘":[0x27,0x0F,0x29],
+    "“":[0x22,0x0F,0x2a],
     "«":[0x3c,0x0F,0x2b],
     # 0x2c character already present in English NOS
     # 0x2d character already present in English NOS
@@ -210,6 +214,17 @@ enhancementmapping = {
     "þ":[0x7f,0x0F,0x7c],
     "ŧ":[0x4f,0x0F,0x7d],
     "ŋ":[0x7f,0x0F,0x7e],
+    
+    # G1 mosaics
+    "▌":[0x7f,0x01,0x35],
+    "▐":[0x7f,0x01,0x6a],
+    "█":[0x7f,0x01,0x7f],
+    
+    # G3 smooth mosaics and line drawing set
+    "▒":[0x7f,0x02,0x2f],
+    "●":[0x7f,0x02,0x4D],
+    "⬤":[0x7f,0x02,0x4E],
+    "◯":[0x4f,0x02,0x4F],
     
     #todo: more mappings
 }
